@@ -49,9 +49,7 @@ export const LoginPage: React.FC = () => {
     }, 1500);
   };
 
-  const handleVerifyOTP = (values: { otp: string }) => {
-    console.log(values);
-
+  const handleVerifyOTP = () => {
     setLoading(true);
     setTimeout(() => {
       setCurrentStep("password");
@@ -260,7 +258,7 @@ export const LoginPage: React.FC = () => {
                 </div>
                 {idx < STEPS.length - 1 && (
                   <div
-                    className={`h-[2px] w-12 mb-5 mx-1 rounded-full transition-all duration-500 ${
+                    className={`h-px w-12 mb-5 mx-1 rounded-full transition-all duration-500 ${
                       idx < stepIndex ? "bg-[#00D4AA]" : "bg-gray-200"
                     }`}
                   />
