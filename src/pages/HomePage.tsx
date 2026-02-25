@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
-import { ProductGrid } from "../components/Product/ProductGrid";
 import Sidebar from "../components/Layout/Sidebar";
+import { ProductGrid } from "../components/Product/ProductGrid";
 
 export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

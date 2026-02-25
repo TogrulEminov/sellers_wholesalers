@@ -50,6 +50,8 @@ export const LoginPage: React.FC = () => {
   };
 
   const handleVerifyOTP = (values: { otp: string }) => {
+    console.log(values);
+
     setLoading(true);
     setTimeout(() => {
       setCurrentStep("password");
