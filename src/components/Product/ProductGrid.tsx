@@ -1,6 +1,6 @@
 import { Empty, Pagination } from "antd";
-import { ProductCard } from "./ProductCard";
 import { mockProducts } from "../../data/mockProducts";
+import ProductCard from "./ProductCard.tsx";
 
 export const ProductGrid = () => {
   if (mockProducts.length === 0) {
