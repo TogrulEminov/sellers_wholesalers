@@ -14,6 +14,7 @@ import SearchComponent from "./Search.tsx";
 import { mainPath } from "../../data/constant.tsx";
 import { useCartItemCount } from "../../hooks/useCart.ts";
 import { useAuth } from "../../hooks/useAuth.ts";
+import { useWishlistCount } from "../../stores/useWishlistStore.ts";
 import { logout } from "../../services/authService.ts";
 import type { AuthUser } from "../../db/types";
 
@@ -127,6 +128,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const cartCount = useCartItemCount();
+  const wishlistCount = useWishlistCount();
   const { isAuthenticated, user, loading } = useAuth();
 
   const handleLogout = async () => {
@@ -159,6 +161,7 @@ export const Header = () => {
               to={mainPath.wishlistPage.main}
               icon={<FiHeart />}
               label="Seçilmişlər"
+              badge={wishlistCount}
               active={location.pathname === mainPath.wishlistPage.main}
             />
             <NavIconLink
