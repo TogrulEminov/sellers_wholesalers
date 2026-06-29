@@ -1,16 +1,14 @@
 import { type MouseEvent } from "react";
-import {
-  CheckCircleFilled,
-  HeartFilled,
-  HeartOutlined,
-  ShoppingCartOutlined,
-} from "@ant-design/icons";
 import { message } from "antd";
 import type { ProductRecord } from "../../db/types";
 import { formatUnitLabel } from "../../data/searchParams";
 import { useIsInCart } from "../../hooks/useCart";
 import { addToCart } from "../../services/cartService";
-import { useIsInWishlist, useWishlistStore } from "../../stores/useWishlistStore";
+import {
+  useIsInWishlist,
+  useWishlistStore,
+} from "../../stores/useWishlistStore";
+import { FaCheck, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 interface Props {
   product: ProductRecord;
@@ -88,12 +86,16 @@ export default function ProductCard({ product }: Props) {
             type="button"
             onClick={handleWishlist}
             className="w-9 h-9 bg-white border border-gray-100 rounded-full flex items-center justify-center hover:border-red-200 transition-colors cursor-pointer"
-            title={inWishlist ? "İstək siyahısından sil" : "İstək siyahısına əlavə et"}
+            title={
+              inWishlist
+                ? "İstək siyahısından sil"
+                : "İstək siyahısına əlavə et"
+            }
           >
             {inWishlist ? (
-              <HeartFilled className="text-red-500 text-[15px]" />
+              <FaHeart className="text-red-500 text-[15px]" />
             ) : (
-              <HeartOutlined className="text-[#aab4be] text-[15px]" />
+              <FaHeart className="text-[#aab4be] text-[15px]" />
             )}
           </button>
 
@@ -110,9 +112,9 @@ export default function ProductCard({ product }: Props) {
             title={inCart ? "Səbətdədir" : "Səbətə əlavə et"}
           >
             {inCart ? (
-              <CheckCircleFilled className="text-white! text-[15px]" />
+              <FaCheck className="text-white! text-[15px]" />
             ) : (
-              <ShoppingCartOutlined className="text-[15px] text-brand-muted" />
+              <FaShoppingCart className="text-[15px] text-brand-muted" />
             )}
           </button>
         </div>
@@ -129,14 +131,16 @@ export default function ProductCard({ product }: Props) {
           </span>
           {inCart && (
             <span className="inline-flex items-center gap-1 bg-[#00D4AA]/12 text-[#00A896] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
-              <CheckCircleFilled className="text-[10px]" />
+              <FaCheck className="text-[10px]" />
               Səbətdədir
             </span>
           )}
         </div>
 
         {groupLabel && (
-          <p className="text-brand-muted text-[11.5px] mb-3 line-clamp-1">{groupLabel}</p>
+          <p className="text-brand-muted text-[11.5px] mb-3 line-clamp-1">
+            {groupLabel}
+          </p>
         )}
 
         <div className="h-px bg-brand-border mb-3" />
@@ -145,7 +149,9 @@ export default function ProductCard({ product }: Props) {
           <span className="text-[#00A8E8] font-bold text-[22px] tracking-tight tabular-nums">
             {formatPrice(product.price, product.currencyCode)}
           </span>
-          <span className="text-brand-muted text-xs">/ {formatUnitLabel(product.unit)}</span>
+          <span className="text-brand-muted text-xs">
+            / {formatUnitLabel(product.unit)}
+          </span>
         </div>
 
         <button
@@ -161,12 +167,12 @@ export default function ProductCard({ product }: Props) {
         >
           {inCart ? (
             <>
-              <CheckCircleFilled className="text-[16px]" />
+              <FaCheck className="text-[16px]" />
               <span>Səbətdədir</span>
             </>
           ) : (
             <>
-              <ShoppingCartOutlined className="text-[16px]" />
+              <FaShoppingCart className="text-[16px]" />
               <span>Səbətə əlavə et</span>
             </>
           )}

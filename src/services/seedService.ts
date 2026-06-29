@@ -3,7 +3,7 @@ import { SEED_PRODUCTS, SEED_UNITS } from "../db/seedData";
 import { SEED_CUSTOMERS, SEED_CUSTOMER_CREDENTIALS } from "../db/customerSeedData";
 import { SEED_ORDERS } from "../db/orderSeedData";
 
-const SCHEMA_VERSION = "5";
+const SCHEMA_VERSION = "7";
 
 export async function ensureSeeded(): Promise<void> {
   const version = await db.meta.get("schema_version");

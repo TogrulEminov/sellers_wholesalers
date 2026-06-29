@@ -6,7 +6,6 @@ import {
   FiUser,
   FiLogOut,
   FiPackage,
-  FiMenu,
   FiChevronDown,
   FiPhone,
 } from "react-icons/fi";
@@ -17,7 +16,6 @@ import { useCartItemCount } from "../../hooks/useCart.ts";
 import { useAuth } from "../../hooks/useAuth.ts";
 import { logout } from "../../services/authService.ts";
 import type { AuthUser } from "../../db/types";
-import { useSidebar } from "../../context/SidebarContext";
 
 function NavIconLink({
   to,
@@ -56,11 +54,13 @@ function NavIconLink({
 
 function UserDropdownPanel({
   user,
+  onProfile,
   onOrders,
   onBasket,
   onLogout,
 }: {
   user: AuthUser;
+  onProfile: () => void;
   onOrders: () => void;
   onBasket: () => void;
   onLogout: () => void;
@@ -73,6 +73,7 @@ function UserDropdownPanel({
     .toUpperCase();
 
   const menuItems = [
+    { icon: <FiUser className="text-base" />, label: "Profilim", onClick: onProfile },
     { icon: <FiPackage className="text-base" />, label: "Sifarişlərim", onClick: onOrders },
     { icon: <FiShoppingCart className="text-base" />, label: "Səbətim", onClick: onBasket },
     { icon: <FiLogOut className="text-base" />, label: "Çıxış", onClick: onLogout, danger: true },
@@ -127,7 +128,6 @@ export const Header = () => {
   const location = useLocation();
   const cartCount = useCartItemCount();
   const { isAuthenticated, user, loading } = useAuth();
-  const { showSidebar, openMobile } = useSidebar();
 
   const handleLogout = async () => {
     try {
@@ -178,6 +178,7 @@ export const Header = () => {
                 popupRender={() => (
                   <UserDropdownPanel
                     user={user}
+                    onProfile={() => navigate(mainPath.profile.main)}
                     onOrders={() => navigate(mainPath.orders.main)}
                     onBasket={() => navigate(mainPath.basket.main)}
                     onLogout={handleLogout}
@@ -215,14 +216,6 @@ export const Header = () => {
               </Link>
             )}
 
-            <button
-              type="button"
-              onClick={openMobile}
-              className={`lg:hidden p-2.5 text-gray-600 hover:text-[#00A8E8] hover:bg-gray-50 rounded-lg transition-colors cursor-pointer ml-1 ${showSidebar ? "" : "hidden"}`}
-              aria-label="Kateqoriyalar"
-            >
-              <FiMenu className="text-xl" />
-            </button>
           </nav>
         </div>
       </div>

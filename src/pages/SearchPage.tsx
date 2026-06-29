@@ -1,18 +1,16 @@
 import { useMemo } from "react";
 import { Link, useSearchParams } from "react-router";
-import { Button, Empty, Pagination, Spin } from "antd";
-import { AppstoreOutlined } from "@ant-design/icons";
+import { Empty, Pagination, Spin } from "antd";
 import { FaSearch } from "react-icons/fa";
 import ProductCard from "../components/Product/ProductCard";
+import CategoryFilter from "../components/Layout/CategoryFilter";
 import { mainPath } from "../data/constant";
-import { useSidebar } from "../context/SidebarContext";
 import { ALL_CATEGORIES, formatUnitLabel, SEARCH_PARAMS } from "../data/searchParams";
 import { useProductSearch } from "../hooks/useProducts";
 
 const PAGE_SIZE = 9;
 
 export default function SearchPage() {
-  const { openMobile } = useSidebar();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get(SEARCH_PARAMS.query)?.trim() ?? "";
   const category = searchParams.get(SEARCH_PARAMS.category) ?? ALL_CATEGORIES;
@@ -49,42 +47,35 @@ export default function SearchPage() {
     category !== ALL_CATEGORIES ? formatUnitLabel(category) : null;
 
   return (
-    <div className="container py-6 lg:py-8">
-      <div className="flex items-start flex-col sm:flex-row sm:justify-between mb-8 gap-4">
-        <div>
-          <p className="text-[#00A8E8] text-xs font-bold uppercase tracking-[0.2em] mb-2">
-            Axtarış
-          </p>
-          {query ? (
-            <>
-              <h1 className="text-[#003459] font-bold text-2xl lg:text-3xl mb-1">
-                &ldquo;{query}&rdquo; üzrə nəticələr
-              </h1>
-              <p className="text-gray-500 text-sm">
-                {filteredProducts === undefined
-                  ? "Axtarılır..."
-                  : total === 0
-                    ? "Heç bir məhsul tapılmadı"
-                    : `${total} məhsul tapıldı${categoryLabel ? ` · ${categoryLabel}` : ""}`}
-              </p>
-            </>
-          ) : (
-            <>
-              <h1 className="text-[#003459] font-bold text-2xl lg:text-3xl mb-1">
-                Məhsul axtarışı
-              </h1>
-              <p className="text-gray-500 text-sm">Ad, kod, brend və ya qrup üzrə axtarın</p>
-            </>
-          )}
-        </div>
-        <Button
-          icon={<AppstoreOutlined />}
-          onClick={openMobile}
-          className="lg:hidden flex items-center gap-2 border border-gray-200 bg-white text-[#003459] hover:border-[#00A8E8] hover:text-[#00A8E8] rounded-lg h-10 px-4 w-full sm:w-fit font-semibold text-sm shrink-0"
-        >
-          Kateqoriyalar
-        </Button>
+    <div className="px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+      <div className="mb-6">
+        <p className="text-[#00A8E8] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          Axtarış
+        </p>
+        {query ? (
+          <>
+            <h1 className="text-[#003459] font-bold text-2xl lg:text-3xl mb-1">
+              &ldquo;{query}&rdquo; üzrə nəticələr
+            </h1>
+            <p className="text-gray-500 text-sm">
+              {filteredProducts === undefined
+                ? "Axtarılır..."
+                : total === 0
+                  ? "Heç bir məhsul tapılmadı"
+                  : `${total} məhsul tapıldı${categoryLabel ? ` · ${categoryLabel}` : ""}`}
+            </p>
+          </>
+        ) : (
+          <>
+            <h1 className="text-[#003459] font-bold text-2xl lg:text-3xl mb-1">
+              Məhsul axtarışı
+            </h1>
+            <p className="text-gray-500 text-sm">Ad, kod, brend və ya qrup üzrə axtarın</p>
+          </>
+        )}
       </div>
+
+      {(query || category !== ALL_CATEGORIES) && <CategoryFilter />}
 
       {!query && (
         <div className="flex flex-col items-center justify-center py-24 text-center">
@@ -126,7 +117,7 @@ export default function SearchPage() {
 
       {query && filteredProducts !== undefined && total > 0 && (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
             {paginatedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

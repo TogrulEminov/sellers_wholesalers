@@ -1,5 +1,6 @@
 import { db } from "../db";
 import type { CartItemWithProduct, OrderRecord } from "../db/types";
+import { buildDefaultInvoice } from "../data/invoiceLabels";
 
 function generateOrderNumber(): string {
   const year = new Date().getFullYear();
@@ -24,16 +25,20 @@ export async function createOrderFromCart(
     0,
   );
 
+  const orderNumber = generateOrderNumber();
+  const createdAt = Date.now();
+
   const order: OrderRecord = {
     id: `ord-${Date.now()}`,
     customerId,
-    orderNumber: generateOrderNumber(),
+    orderNumber,
     status: "pending",
     totalAmount,
     currencyCode: items[0]?.product.currencyCode ?? "USD",
     itemCount: orderItems.length,
     items: orderItems,
-    createdAt: Date.now(),
+    createdAt,
+    invoice: buildDefaultInvoice(orderNumber, createdAt),
   };
 
   await db.orders.add(order);

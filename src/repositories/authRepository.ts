@@ -45,3 +45,17 @@ export async function getCurrentSession(): Promise<SessionRecord | undefined> {
 export async function clearSession(): Promise<void> {
   await db.sessions.delete(SESSION_ID);
 }
+
+export async function updateSessionPhone(
+  phone: string,
+  phoneNormalized: string,
+): Promise<void> {
+  const session = await getCurrentSession();
+  if (!session) return;
+
+  await db.sessions.put({
+    ...session,
+    phone,
+    phoneNormalized,
+  });
+}

@@ -8,6 +8,7 @@ import WishlistPage from "./pages/WishlistPage.tsx";
 import BasketPage from "./pages/BasketPage.tsx";
 import SearchPage from "./pages/SearchPage.tsx";
 import MyOrdersPage from "./pages/MyOrdersPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 import { DbProvider } from "./providers/DbProvider.tsx";
 import { antdTheme } from "./data/theme.ts";
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: mainPath.orders.main,
         element: <MyOrdersPage />,
+      },
+      {
+        path: mainPath.profile.main,
+        element: <ProfilePage />,
       },
     ],
   },

@@ -15,6 +15,9 @@ export const mainPath = {
     orders: {
         main: "/orders",
     },
+    profile: {
+        main: "/profile",
+    },
     login: {
         main: "/login",
     },

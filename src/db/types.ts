@@ -92,6 +92,11 @@ export interface OrderItemRecord {
   price: number;
 }
 
+export interface OrderInvoiceRecord {
+  fileName: string;
+  issuedAt: number;
+}
+
 export interface OrderRecord {
   id: string;
   customerId: string;
@@ -102,4 +107,5 @@ export interface OrderRecord {
   itemCount: number;
   items: OrderItemRecord[];
   createdAt: number;
+  invoice: OrderInvoiceRecord;
 }

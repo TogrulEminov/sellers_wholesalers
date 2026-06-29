@@ -1,7 +1,15 @@
 import type { OrderRecord } from "./types";
+import { buildDefaultInvoice } from "../data/invoiceLabels";
+
+function withInvoice(order: Omit<OrderRecord, "invoice">): OrderRecord {
+  return {
+    ...order,
+    invoice: buildDefaultInvoice(order.orderNumber, order.createdAt),
+  };
+}
 
 export const SEED_ORDERS: OrderRecord[] = [
-  {
+  withInvoice({
     id: "ord-001",
     customerId: "741",
     orderNumber: "SIF-2026-0041",
@@ -26,8 +34,8 @@ export const SEED_ORDERS: OrderRecord[] = [
         price: 0.3,
       },
     ],
-  },
-  {
+  }),
+  withInvoice({
     id: "ord-002",
     customerId: "741",
     orderNumber: "SIF-2026-0058",
@@ -52,8 +60,8 @@ export const SEED_ORDERS: OrderRecord[] = [
         price: 0.5,
       },
     ],
-  },
-  {
+  }),
+  withInvoice({
     id: "ord-003",
     customerId: "747",
     orderNumber: "SIF-2026-0062",
@@ -71,8 +79,8 @@ export const SEED_ORDERS: OrderRecord[] = [
         price: 0.3,
       },
     ],
-  },
-  {
+  }),
+  withInvoice({
     id: "ord-004",
     customerId: "756",
     orderNumber: "SIF-2026-0065",
@@ -90,5 +98,5 @@ export const SEED_ORDERS: OrderRecord[] = [
         price: 2.0,
       },
     ],
-  },
+  }),
 ];
