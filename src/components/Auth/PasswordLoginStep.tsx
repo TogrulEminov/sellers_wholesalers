@@ -20,22 +20,22 @@ export default function PasswordLoginStep({
   return (
     <div>
       <div className={compact ? "mb-5" : "mb-8"}>
-        <h1 className={`font-bold text-[#003459] ${compact ? "text-xl mb-1" : "text-2xl mb-2"}`}>
+        <h1 className={`font-bold text-brand-dark ${compact ? "text-xl mb-1" : "text-2xl mb-2"}`}>
           Şifrənizi daxil edin
         </h1>
         <p className="text-gray-500 text-sm">Hesab şifrənizlə daxil olun</p>
       </div>
 
-      <div className="flex items-center gap-3 rounded-lg border border-[#00D4AA]/30 bg-[#00D4AA]/5 px-4 py-3 mb-6">
-        <CheckCircleOutlined className="text-[#00D4AA] text-lg shrink-0" />
+      <div className="flex items-center gap-3 rounded-lg border border-brand-success/30 bg-brand-success/5 px-4 py-3 mb-6">
+        <CheckCircleOutlined className="text-brand-success text-lg shrink-0" />
         <div className="flex-1 min-w-0">
           <p className="text-[10px] text-gray-400 uppercase font-medium">Təsdiqlənmiş nömrə</p>
-          <p className="text-sm font-semibold text-[#003459] truncate">{displayPhone}</p>
+          <p className="text-sm font-semibold text-brand-dark truncate">{displayPhone}</p>
         </div>
         <button
           type="button"
           onClick={onChangePhone}
-          className="text-xs font-semibold text-[#00A8E8] hover:underline shrink-0 cursor-pointer"
+          className="text-xs font-semibold text-brand-gold hover:underline shrink-0 cursor-pointer"
         >
           Dəyiş
         </button>
@@ -50,14 +50,14 @@ export default function PasswordLoginStep({
           <Input.Password
             size="large"
             placeholder="Şifrənizi daxil edin"
-            prefix={<LockOutlined className="text-[#00A8E8]" />}
+            prefix={<LockOutlined className="text-brand-gold" />}
             className="h-12 rounded-lg"
           />
         </Form.Item>
 
         {!compact && (
           <p className="text-xs text-gray-400 mb-4">
-            Demo şifrə: <span className="font-mono font-semibold text-[#003459]">{DEMO_PASSWORD}</span>
+            Demo şifrə: <span className="font-mono font-semibold text-brand-dark">{DEMO_PASSWORD}</span>
           </p>
         )}
 
@@ -67,7 +67,7 @@ export default function PasswordLoginStep({
           size="large"
           block
           loading={loading}
-          className="h-12 rounded-lg font-semibold bg-[#003459] hover:bg-[#00A8E8]! border-none"
+          className="h-12 rounded-lg font-semibold bg-brand-dark hover:bg-brand-gold! border-none"
         >
           Daxil ol
         </Button>

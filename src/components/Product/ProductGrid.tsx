@@ -1,6 +1,6 @@
 import { Empty, Pagination, Spin } from "antd";
 import { useSearchParams } from "react-router";
-import { ALL_CATEGORIES, formatUnitLabel, SEARCH_PARAMS } from "../../data/searchParams";
+import { ALL_GROUPS, formatGroupLabel, SEARCH_PARAMS } from "../../data/searchParams";
 import { useProducts } from "../../hooks/useProducts";
 import ProductCard from "./ProductCard.tsx";
 
@@ -8,10 +8,10 @@ const PAGE_SIZE = 9;
 
 export function ProductGrid() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const category = searchParams.get(SEARCH_PARAMS.category) ?? ALL_CATEGORIES;
+  const group = searchParams.get(SEARCH_PARAMS.group) ?? ALL_GROUPS;
   const page = Math.max(1, Number(searchParams.get(SEARCH_PARAMS.page) ?? "1"));
 
-  const products = useProducts(category);
+  const products = useProducts(group);
 
   if (products === undefined) {
     return (
@@ -40,9 +40,9 @@ export function ProductGrid() {
       <div className="flex items-center justify-center h-96">
         <Empty
           description={
-            category === ALL_CATEGORIES
+            group === ALL_GROUPS
               ? "Məhsul tapılmadı"
-              : `${formatUnitLabel(category)} kateqoriyasında məhsul yoxdur`
+              : `${formatGroupLabel(group)} qrupunda məhsul yoxdur`
           }
           className="[&_.ant-empty-description]:text-gray-400"
         />

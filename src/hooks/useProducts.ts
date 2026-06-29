@@ -1,25 +1,28 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import type { ProductRecord } from "../db/types";
-import { ALL_CATEGORIES } from "../data/searchParams";
+import { ALL_GROUPS } from "../data/searchParams";
+import { productMatchesGroup } from "../data/groupLabels";
 import { productMatchesQuery } from "../repositories/productRepository";
 
-export function useProducts(category: string | null): ProductRecord[] | undefined {
+export function useProducts(group: string | null): ProductRecord[] | undefined {
   return useLiveQuery(async () => {
-    if (!category || category === ALL_CATEGORIES) {
-      return db.products.toArray();
+    const products = await db.products.toArray();
+    if (!group || group === ALL_GROUPS) {
+      return products;
     }
-    return db.products.where("unit").equals(category).toArray();
-  }, [category]);
+    return products.filter((product) => productMatchesGroup(product.group, group));
+  }, [group]);
 }
 
-export function useProductCount(category: string | null): number | undefined {
+export function useProductCount(group: string | null): number | undefined {
   return useLiveQuery(async () => {
-    if (!category || category === ALL_CATEGORIES) {
-      return db.products.count();
+    const products = await db.products.toArray();
+    if (!group || group === ALL_GROUPS) {
+      return products.length;
     }
-    return db.products.where("unit").equals(category).count();
-  }, [category]);
+    return products.filter((product) => productMatchesGroup(product.group, group)).length;
+  }, [group]);
 }
 
 export function useProductSearch(query: string): ProductRecord[] | undefined {

@@ -23,7 +23,7 @@ export default function SelectAll({
         checked={checked}
         indeterminate={indeterminate}
         onChange={(e) => onChange(e.target.checked)}
-        className="text-[#003459] font-medium"
+        className="text-brand-dark font-medium"
       >
         Hamısını seç
       </Checkbox>

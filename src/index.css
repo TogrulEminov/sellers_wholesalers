@@ -18,18 +18,18 @@
   }
 }
 @theme {
-  --color-brand-dark: #003459;
-  --color-brand-darker: #002840;
-  --color-brand-gold: #00a8e8;
-  --color-brand-gold-light: #33b9eb;
-  --color-brand-copper: #00a8e8;
-  --color-brand-cream: #f8fafc;
+  --color-brand-dark: #1a1a1a;
+  --color-brand-darker: #0d0d0d;
+  --color-brand-gold: #d4a843;
+  --color-brand-gold-light: #e0bc6a;
+  --color-brand-copper: #c49838;
+  --color-brand-cream: #faf8f5;
   --color-brand-surface: #ffffff;
-  --color-brand-sand: #eef8fd;
-  --color-brand-text: #003459;
-  --color-brand-muted: #8b9aa8;
-  --color-brand-border: #e5e7eb;
-  --color-brand-success: #00d4aa;
+  --color-brand-sand: #f5f0e8;
+  --color-brand-text: #1a1a1a;
+  --color-brand-muted: #8b8178;
+  --color-brand-border: #e8e2d9;
+  --color-brand-success: #2e7d5a;
 }
 
 body {
@@ -45,16 +45,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #e8f4f8;
+  background: #f5f0e8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00a8e8;
+  background: #d4a843;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #003459;
+  background: #1a1a1a;
 }
 
 @layer utilities {

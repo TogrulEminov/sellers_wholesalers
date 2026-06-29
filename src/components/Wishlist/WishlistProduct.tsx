@@ -21,10 +21,10 @@ export default function WishlistProduct({ viewMode, unitFilter, sortBy }: Props)
 
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <div className="w-16 h-16 bg-[#eef8fd] rounded-xl flex items-center justify-center mb-4">
-          <FaHeart className="size-7 text-[#00A8E8]/40" />
+        <div className="w-16 h-16 bg-brand-sand rounded-xl flex items-center justify-center mb-4">
+          <FaHeart className="size-7 text-brand-gold/40" />
         </div>
-        <h3 className="text-lg font-semibold text-[#003459] mb-2">
+        <h3 className="text-lg font-semibold text-brand-dark mb-2">
           {isFiltered ? "Bu filtrə uyğun məhsul yoxdur" : "Siyahı boşdur"}
         </h3>
         <p className="text-gray-500 text-sm max-w-md mb-6">
@@ -35,7 +35,7 @@ export default function WishlistProduct({ viewMode, unitFilter, sortBy }: Props)
         {!isFiltered && (
           <Link
             to={mainPath.home.main}
-            className="text-sm font-semibold text-[#00A8E8] hover:underline"
+            className="text-sm font-semibold text-brand-gold hover:underline"
           >
             Kataloqa keç
           </Link>

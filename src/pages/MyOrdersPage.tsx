@@ -31,10 +31,10 @@ export default function MyOrdersPage() {
     return (
       <section className="min-h-[70vh] flex items-center justify-center px-4">
         <div className="text-center max-w-md">
-          <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-[#eef8fd] flex items-center justify-center">
-            <FiPackage className="w-8 h-8 text-[#00A8E8]" />
+          <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-brand-sand flex items-center justify-center">
+            <FiPackage className="w-8 h-8 text-brand-gold" />
           </div>
-          <h1 className="text-2xl font-bold text-[#003459] mb-2">
+          <h1 className="text-2xl font-bold text-brand-dark mb-2">
             Sifarişlərim
           </h1>
           <p className="text-gray-500 mb-6">
@@ -42,7 +42,7 @@ export default function MyOrdersPage() {
           </p>
           <Link
             to={mainPath.login.main}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#00A8E8] text-white font-semibold hover:bg-[#0096D1] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-white font-semibold hover:bg-brand-copper transition-colors"
           >
             Daxil ol
             <FiArrowRight />
@@ -56,10 +56,10 @@ export default function MyOrdersPage() {
     <section className="min-h-screen py-8 md:py-12">
       <div className="container">
         <div className="mb-8 pb-4 border-b border-gray-200">
-          <p className="text-[#00A8E8] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          <p className="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Hesab
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#003459] mb-1">
+          <h1 className="text-2xl md:text-3xl font-bold text-brand-dark mb-1">
             Sifarişlərim
           </h1>
           <p className="text-gray-500 text-sm">
@@ -88,7 +88,7 @@ export default function MyOrdersPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-5 py-4 border-b border-gray-100">
                   <div>
                     <div className="flex items-center gap-3 flex-wrap">
-                      <h2 className="font-bold text-[#003459]">
+                      <h2 className="font-bold text-brand-dark">
                         {order.orderNumber}
                       </h2>
                       <span
@@ -102,7 +102,7 @@ export default function MyOrdersPage() {
                     </p>
                   </div>
                   <div className="text-left sm:text-right">
-                    <p className="text-xl font-bold text-[#00A8E8]">
+                    <p className="text-xl font-bold text-brand-gold">
                       {formatMoney(order.totalAmount, order.currencyCode)}
                     </p>
                     <p className="text-gray-400 text-xs mt-0.5">
@@ -118,7 +118,7 @@ export default function MyOrdersPage() {
                       className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 border-b border-gray-100 last:border-0"
                     >
                       <div className="min-w-0">
-                        <p className="font-medium text-[#003459] text-sm line-clamp-1">
+                        <p className="font-medium text-brand-dark text-sm line-clamp-1">
                           {item.productName}
                         </p>
                         <p className="text-gray-400 text-xs font-mono mt-0.5">
@@ -129,7 +129,7 @@ export default function MyOrdersPage() {
                         <span className="text-gray-500">
                           {item.quantity} {formatUnitLabel(item.unit)}
                         </span>
-                        <span className="font-semibold text-[#003459]">
+                        <span className="font-semibold text-brand-dark">
                           {formatMoney(
                             item.price * item.quantity,
                             order.currencyCode,

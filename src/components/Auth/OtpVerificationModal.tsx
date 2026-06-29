@@ -36,18 +36,18 @@ export default function OtpVerificationModal({
       className="otp-modal"
     >
       <div className="pt-2 pb-1">
-        <div className="w-11 h-11 rounded-lg bg-[#eef8fd] flex items-center justify-center mb-4">
-          <SafetyOutlined className="text-xl text-[#00A8E8]" />
+        <div className="w-11 h-11 rounded-lg bg-brand-sand flex items-center justify-center mb-4">
+          <SafetyOutlined className="text-xl text-brand-gold" />
         </div>
 
-        <h2 className="text-lg font-bold text-[#003459] mb-1">SMS doğrulama</h2>
+        <h2 className="text-lg font-bold text-brand-dark mb-1">SMS doğrulama</h2>
         <p className="text-sm text-gray-500 mb-1">
-          <span className="font-semibold text-[#003459]">{displayPhone}</span> nömrəsinə göndərilən kodu daxil edin
+          <span className="font-semibold text-brand-dark">{displayPhone}</span> nömrəsinə göndərilən kodu daxil edin
         </p>
         <button
           type="button"
           onClick={onChangePhone}
-          className="text-xs font-semibold text-[#00A8E8] hover:underline mb-5 cursor-pointer"
+          className="text-xs font-semibold text-brand-gold hover:underline mb-5 cursor-pointer"
         >
           Nömrəni dəyiş
         </button>
@@ -74,7 +74,7 @@ export default function OtpVerificationModal({
             size="large"
             block
             loading={loading}
-            className="h-11 rounded-lg font-semibold bg-[#00A8E8] hover:bg-[#0096D1]! border-none mb-3"
+            className="h-11 rounded-lg font-semibold bg-brand-gold hover:bg-brand-copper! border-none mb-3"
           >
             Kodu təsdiqlə
           </Button>
@@ -85,7 +85,7 @@ export default function OtpVerificationModal({
               type="button"
               onClick={onResend}
               disabled={resendLoading}
-              className="text-[#00A8E8] font-semibold hover:underline cursor-pointer disabled:opacity-50"
+              className="text-brand-gold font-semibold hover:underline cursor-pointer disabled:opacity-50"
             >
               Yenidən göndər
             </button>

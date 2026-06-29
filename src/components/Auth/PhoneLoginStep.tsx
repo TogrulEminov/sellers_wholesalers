@@ -11,7 +11,7 @@ export default function PhoneLoginStep({ loading, onSubmit, compact = false }: P
   return (
     <div>
       <div className={compact ? "mb-5" : "mb-8"}>
-        <h1 className={`font-bold text-[#003459] ${compact ? "text-xl mb-1" : "text-2xl mb-2"}`}>
+        <h1 className={`font-bold text-brand-dark ${compact ? "text-xl mb-1" : "text-2xl mb-2"}`}>
           Daxil ol
         </h1>
         <p className="text-gray-500 text-sm">
@@ -38,15 +38,15 @@ export default function PhoneLoginStep({ loading, onSubmit, compact = false }: P
           <Input
             size="large"
             placeholder="055 375 85 00"
-            prefix={<FaPhoneAlt className="text-[#00A8E8]" />}
+            prefix={<FaPhoneAlt className="text-brand-gold" />}
             className="h-12 rounded-lg"
           />
         </Form.Item>
 
         {!compact && (
           <p className="text-xs text-gray-400 mb-4">
-            Test: <span className="font-mono text-[#003459]">055 375 85 00</span> ·{" "}
-            <span className="font-mono text-[#003459]">051 305 39 22</span>
+            Test: <span className="font-mono text-brand-dark">055 375 85 00</span> ·{" "}
+            <span className="font-mono text-brand-dark">051 305 39 22</span>
           </p>
         )}
 
@@ -56,7 +56,7 @@ export default function PhoneLoginStep({ loading, onSubmit, compact = false }: P
           size="large"
           block
           loading={loading}
-          className="h-12 rounded-lg font-semibold bg-[#00A8E8] hover:bg-[#0096D1]! border-none"
+          className="h-12 rounded-lg font-semibold bg-brand-gold hover:bg-brand-copper! border-none"
         >
           Davam et
         </Button>

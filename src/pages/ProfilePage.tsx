@@ -56,14 +56,14 @@ export default function ProfilePage() {
     return (
       <section className="min-h-[70vh] flex items-center justify-center px-4">
         <div className="text-center max-w-md">
-          <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-[#eef8fd] flex items-center justify-center">
-            <FiUser className="w-8 h-8 text-[#00A8E8]" />
+          <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-brand-sand flex items-center justify-center">
+            <FiUser className="w-8 h-8 text-brand-gold" />
           </div>
-          <h1 className="text-2xl font-bold text-[#003459] mb-2">Profilim</h1>
+          <h1 className="text-2xl font-bold text-brand-dark mb-2">Profilim</h1>
           <p className="text-gray-500 mb-6">Profilinizi redaktə etmək üçün daxil olun.</p>
           <Link
             to={mainPath.login.main}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#00A8E8] text-white font-semibold hover:bg-[#0096D1] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-white font-semibold hover:bg-brand-copper transition-colors"
           >
             Daxil ol
             <FiArrowRight />
@@ -113,10 +113,10 @@ export default function ProfilePage() {
     <section className="min-h-screen py-8 md:py-12">
       <div className="container mx-auto">
         <div className="mb-8 pb-4 border-b border-gray-200">
-          <p className="text-[#00A8E8] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          <p className="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Hesab
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#003459]">Profilim</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-brand-dark">Profilim</h1>
           <p className="text-gray-500 text-sm mt-1">Şəxsi məlumatlarınızı redaktə edin</p>
         </div>
 
@@ -131,7 +131,7 @@ export default function ProfilePage() {
         ) : (
           <div className="space-y-6">
             <div className="rounded-lg border border-gray-200 bg-white p-5 sm:p-6">
-              <h2 className="text-base font-semibold text-[#003459] mb-4">Hesab məlumatları</h2>
+              <h2 className="text-base font-semibold text-brand-dark mb-4">Hesab məlumatları</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
                   { label: "Kod", value: customer.code },
@@ -148,14 +148,14 @@ export default function ProfilePage() {
                     <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-0.5">
                       {item.label}
                     </p>
-                    <p className="text-sm font-medium text-[#003459] truncate">{item.value}</p>
+                    <p className="text-sm font-medium text-brand-dark truncate">{item.value}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="rounded-lg border border-gray-200 bg-white p-5 sm:p-6">
-              <h2 className="text-base font-semibold text-[#003459] mb-4">Şəxsi məlumatlar</h2>
+              <h2 className="text-base font-semibold text-brand-dark mb-4">Şəxsi məlumatlar</h2>
               <Form form={profileForm} layout="vertical" onFinish={handleProfileSave}>
                 <div className="grid sm:grid-cols-2 gap-x-4">
                   <Form.Item
@@ -225,7 +225,7 @@ export default function ProfilePage() {
                   type="primary"
                   htmlType="submit"
                   loading={savingProfile}
-                  className="h-11 px-6 rounded-lg font-semibold bg-[#00A8E8] hover:bg-[#0096D1]! border-none"
+                  className="h-11 px-6 rounded-lg font-semibold bg-brand-gold hover:bg-brand-copper! border-none"
                 >
                   Dəyişiklikləri saxla
                 </Button>
@@ -234,8 +234,8 @@ export default function ProfilePage() {
 
             <div className="rounded-lg border border-gray-200 bg-white p-5 sm:p-6">
               <div className="flex items-center gap-2 mb-4">
-                <FiLock className="text-[#00A8E8]" />
-                <h2 className="text-base font-semibold text-[#003459]">Şifrə dəyişikliyi</h2>
+                <FiLock className="text-brand-gold" />
+                <h2 className="text-base font-semibold text-brand-dark">Şifrə dəyişikliyi</h2>
               </div>
 
               <Form form={passwordForm} layout="vertical" onFinish={handlePasswordSave}>

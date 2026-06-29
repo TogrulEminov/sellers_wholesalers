@@ -4,12 +4,17 @@ import { mainPath } from "../../data/constant.tsx";
 import { SEARCH_PARAMS } from "../../data/searchParams";
 import { FaSearch } from "react-icons/fa";
 
-export default function SearchComponent() {
+interface Props {
+  variant?: "light" | "dark";
+}
+
+export default function SearchComponent({ variant = "light" }: Props) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = useId();
   const urlQuery = searchParams.get(SEARCH_PARAMS.query) ?? "";
   const [search, setSearch] = useState<string>(urlQuery);
+  const isDark = variant === "dark";
 
   useEffect(() => {
     setSearch(urlQuery);
@@ -32,14 +37,22 @@ export default function SearchComponent() {
         value={search}
         onChange={(e) => setSearch(e.currentTarget.value)}
         placeholder="Məhsul, kod və ya brend axtar..."
-        className="w-full h-10 pl-4 pr-12 rounded-lg outline-none transition-all duration-200 text-sm
-          bg-blue-50/80 border border-transparent text-slate-700 placeholder:text-slate-400
-          focus:bg-white focus:border-[#00A8E8] focus:ring-2 focus:ring-[#00A8E8]/20"
+        className={`w-full h-10 pl-4 pr-12 rounded-lg outline-none transition-all duration-200 text-sm border
+          ${
+            isDark
+              ? "bg-white/10 border-transparent text-white placeholder:text-gray-400 focus:bg-white/15 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20"
+              : "bg-brand-sand/80 border-transparent text-brand-dark placeholder:text-gray-400 focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20"
+          }`}
       />
       <button
         type="submit"
         form={id}
-        className="absolute cursor-pointer right-2 p-2 rounded-lg text-slate-500 hover:text-[#00A8E8] hover:bg-blue-100 transition-colors duration-200"
+        className={`absolute cursor-pointer right-2 p-2 rounded-lg transition-colors duration-200
+          ${
+            isDark
+              ? "text-gray-400 hover:text-brand-gold hover:bg-white/10"
+              : "text-gray-500 hover:text-brand-gold hover:bg-brand-sand"
+          }`}
       >
         <FaSearch className="w-4 h-4" />
       </button>

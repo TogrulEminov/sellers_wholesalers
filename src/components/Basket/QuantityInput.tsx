@@ -23,13 +23,13 @@ export default function QuantityInput({ value, min = 1, max = 99, onChange }: Pr
         onClick={handleDecrement}
         disabled={value <= min}
         className="w-8 h-8 rounded-md border border-gray-200 flex items-center justify-center text-gray-600
-                   hover:border-[#00A8E8] hover:text-[#00A8E8]
+                   hover:border-brand-gold hover:text-brand-gold
                    disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         <BiMinus className="w-3.5 h-3.5" />
       </button>
 
-      <span className="w-8 text-center font-semibold text-[#003459] text-sm tabular-nums select-none">
+      <span className="w-8 text-center font-semibold text-brand-dark text-sm tabular-nums select-none">
         {value}
       </span>
 
@@ -38,7 +38,7 @@ export default function QuantityInput({ value, min = 1, max = 99, onChange }: Pr
         onClick={handleIncrement}
         disabled={value >= max}
         className="w-8 h-8 rounded-md border border-gray-200 flex items-center justify-center text-gray-600
-                   hover:border-[#00A8E8] hover:text-[#00A8E8]
+                   hover:border-brand-gold hover:text-brand-gold
                    disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         <BiPlus className="w-3.5 h-3.5" />

@@ -62,18 +62,18 @@ export function getInvoicePrintHtml(invoice: InvoiceViewModel): string {
   <meta charset="UTF-8" />
   <title>${invoice.fileName}</title>
   <style>
-    body { font-family: Arial, sans-serif; color: #003459; margin: 32px; }
-    h1 { margin: 0 0 4px; font-size: 22px; }
+    body { font-family: Arial, sans-serif; color: #1a1a1a; margin: 32px; background: #faf8f5; }
+    h1 { margin: 0 0 4px; font-size: 22px; color: #d4a843; }
     .muted { color: #6b7280; font-size: 13px; }
     table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th { text-align: left; font-size: 11px; text-transform: uppercase; color: #6b7280; padding: 8px; border-bottom: 2px solid #003459; }
-    .total { margin-top: 16px; text-align: right; font-size: 18px; font-weight: bold; color: #00A8E8; }
+    th { text-align: left; font-size: 11px; text-transform: uppercase; color: #6b7280; padding: 8px; border-bottom: 2px solid #1a1a1a; }
+    .total { margin-top: 16px; text-align: right; font-size: 18px; font-weight: bold; color: #d4a843; }
   </style>
 </head>
 <body>
   <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;">
     <div>
-      <h1>BulkTrade</h1>
+      <h1>Hürrem</h1>
       <div class="muted">B2B topdan satış · Faktura</div>
     </div>
     <div style="text-align:right;">
@@ -82,13 +82,13 @@ export function getInvoicePrintHtml(invoice: InvoiceViewModel): string {
     </div>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px;">
-    <div style="background:#f8fafc;padding:12px;border-radius:8px;">
+    <div style="background:#f5f0e8;padding:12px;border-radius:8px;">
       <div class="muted">Müştəri</div>
       <div style="font-weight:600;">${invoice.customerName}</div>
       <div class="muted">${invoice.customerCode} · ${invoice.customerGroup}</div>
       <div class="muted">${invoice.customerDepartment}</div>
     </div>
-    <div style="background:#f8fafc;padding:12px;border-radius:8px;text-align:right;">
+    <div style="background:#f5f0e8;padding:12px;border-radius:8px;text-align:right;">
       <div class="muted">Sifariş</div>
       <div style="font-weight:600;">${invoice.orderNumber}</div>
       <div class="muted">${invoice.orderDate}</div>

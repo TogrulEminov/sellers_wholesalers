@@ -34,7 +34,7 @@ export async function createOrderFromCart(
     orderNumber,
     status: "pending",
     totalAmount,
-    currencyCode: items[0]?.product.currencyCode ?? "USD",
+    currencyCode: items[0]?.product.currencyCode ?? "AZN",
     itemCount: orderItems.length,
     items: orderItems,
     createdAt,

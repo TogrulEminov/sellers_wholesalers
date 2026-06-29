@@ -69,7 +69,7 @@ export default function WishlistFilter({
             type="button"
             onClick={() => setViewMode("grid")}
             className={`p-2 rounded-md transition-colors cursor-pointer ${
-              viewMode === "grid" ? "bg-white text-[#00A8E8]" : "text-gray-400"
+              viewMode === "grid" ? "bg-white text-brand-gold" : "text-gray-400"
             }`}
             aria-label="Grid"
           >
@@ -79,7 +79,7 @@ export default function WishlistFilter({
             type="button"
             onClick={() => setViewMode("list")}
             className={`p-2 rounded-md transition-colors cursor-pointer ${
-              viewMode === "list" ? "bg-white text-[#00A8E8]" : "text-gray-400"
+              viewMode === "list" ? "bg-white text-brand-gold" : "text-gray-400"
             }`}
             aria-label="List"
           >

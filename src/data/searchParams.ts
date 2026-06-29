@@ -1,10 +1,12 @@
 export const SEARCH_PARAMS = {
-  category: "category",
+  group: "group",
   page: "page",
   query: "query",
 } as const;
 
-export const ALL_CATEGORIES = "all";
+export const ALL_GROUPS = "all";
+
+export { formatGroupLabel, normalizeGroupName, productMatchesGroup } from "./groupLabels";
 
 export function formatUnitLabel(name: string): string {
   const labels: Record<string, string> = {
@@ -16,3 +18,6 @@ export function formatUnitLabel(name: string): string {
   };
   return labels[name] ?? name;
 }
+
+/** @deprecated use ALL_GROUPS */
+export const ALL_CATEGORIES = ALL_GROUPS;

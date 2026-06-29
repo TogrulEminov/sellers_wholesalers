@@ -21,7 +21,7 @@ export default function OrderInvoiceActions({ order, user, customer }: Props) {
       <button
         type="button"
         onClick={() => openInvoicePdf(order, user, customer)}
-        className="inline-flex items-center gap-1.5 text-sm text-[#00A8E8] hover:text-[#0096D1] hover:underline cursor-pointer"
+        className="inline-flex items-center gap-1.5 text-sm text-brand-gold hover:text-brand-copper hover:underline cursor-pointer"
       >
         <FiExternalLink className="w-3.5 h-3.5 shrink-0" />
         <span>Fakturaya bax</span>

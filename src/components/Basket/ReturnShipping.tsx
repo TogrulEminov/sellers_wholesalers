@@ -11,7 +11,7 @@ export default function ReturnShipping() {
         onClick={() => navigate(mainPath.home.main)}
         type="default"
         size="middle"
-        className="rounded-lg px-6 h-10 border-gray-200 text-[#003459] hover:border-[#00A8E8] hover:text-[#00A8E8]"
+        className="rounded-lg px-6 h-10 border-gray-200 text-brand-dark hover:border-brand-gold hover:text-brand-gold"
       >
         Alış-verişə davam et
       </Button>

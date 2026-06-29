@@ -39,12 +39,12 @@ export default function SearchPage() {
     <section className="py-6 lg:py-8">
       <div className="container">
         <div className="mb-6">
-          <p className="text-[#00A8E8] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+          <p className="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Axtarış
           </p>
           {query ? (
             <>
-              <h1 className="text-[#003459] font-bold text-2xl lg:text-3xl mb-1">
+              <h1 className="text-brand-dark font-bold text-2xl lg:text-3xl mb-1">
                 &ldquo;{query}&rdquo; üzrə nəticələr
               </h1>
               <p className="text-gray-500 text-sm">
@@ -57,7 +57,7 @@ export default function SearchPage() {
             </>
           ) : (
             <>
-              <h1 className="text-[#003459] font-bold text-2xl lg:text-3xl mb-1">
+              <h1 className="text-brand-dark font-bold text-2xl lg:text-3xl mb-1">
                 Məhsul axtarışı
               </h1>
               <p className="text-gray-500 text-sm">
@@ -69,8 +69,8 @@ export default function SearchPage() {
 
         {!query && (
           <div className="flex flex-col items-center justify-center py-24 text-center">
-            <div className="w-16 h-16 rounded-lg bg-[#eef8fd] flex items-center justify-center mb-4">
-              <FaSearch className="w-7 h-7 text-[#00A8E8]" />
+            <div className="w-16 h-16 rounded-lg bg-brand-sand flex items-center justify-center mb-4">
+              <FaSearch className="w-7 h-7 text-brand-gold" />
             </div>
             <p className="text-gray-500 mb-2">Axtarış sorğusu daxil edin</p>
             <p className="text-gray-400 text-sm max-w-md">
@@ -98,7 +98,7 @@ export default function SearchPage() {
             />
             <Link
               to={mainPath.home.main}
-              className="mt-6 text-sm font-semibold text-[#00A8E8] hover:underline"
+              className="mt-6 text-sm font-semibold text-brand-gold hover:underline"
             >
               Kataloqa qayıt
             </Link>

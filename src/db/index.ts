@@ -3,6 +3,7 @@ import type {
   CartItemRecord,
   CustomerCredentialRecord,
   CustomerRecord,
+  GroupRecord,
   MetaRecord,
   OtpRecord,
   ProductRecord,
@@ -14,6 +15,7 @@ import type {
 export class SellersDB extends Dexie {
   products!: Table<ProductRecord, string>;
   units!: Table<UnitRecord, number>;
+  groups!: Table<GroupRecord, number>;
   cartItems!: Table<CartItemRecord, string>;
   customers!: Table<CustomerRecord, string>;
   customerCredentials!: Table<CustomerCredentialRecord, string>;
@@ -58,6 +60,19 @@ export class SellersDB extends Dexie {
     this.version(5).stores({
       products: "id, code, unit, group, brand, name",
       units: "id, name",
+      cartItems: "productId, addedAt",
+      customers: "id, code, phoneNormalized, mobileNormalized, group",
+      customerCredentials: "customerId",
+      otpCodes: "phoneNormalized, customerId",
+      sessions: "id, customerId",
+      orders: "id, customerId, orderNumber, status, createdAt",
+      meta: "key",
+    });
+
+    this.version(6).stores({
+      products: "id, code, unit, group, brand, name",
+      units: "id, name",
+      groups: "id, name, module, isWebVisible",
       cartItems: "productId, addedAt",
       customers: "id, code, phoneNormalized, mobileNormalized, group",
       customerCredentials: "customerId",

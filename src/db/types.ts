@@ -3,6 +3,13 @@ export interface UnitRecord {
   name: string;
 }
 
+export interface GroupRecord {
+  id: number;
+  name: string;
+  module: string;
+  isWebVisible: number;
+}
+
 export interface ProductRecord {
   id: string;
   code: string;

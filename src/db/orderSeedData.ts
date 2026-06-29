@@ -15,7 +15,7 @@ export const SEED_ORDERS: OrderRecord[] = [
     orderNumber: "SIF-2026-0041",
     status: "delivered",
     totalAmount: 156.5,
-    currencyCode: "USD",
+    currencyCode: "AZN",
     itemCount: 3,
     createdAt: Date.now() - 1000 * 60 * 60 * 24 * 12,
     items: [
@@ -41,7 +41,7 @@ export const SEED_ORDERS: OrderRecord[] = [
     orderNumber: "SIF-2026-0058",
     status: "shipped",
     totalAmount: 89.0,
-    currencyCode: "USD",
+    currencyCode: "AZN",
     itemCount: 2,
     createdAt: Date.now() - 1000 * 60 * 60 * 24 * 4,
     items: [
@@ -67,7 +67,7 @@ export const SEED_ORDERS: OrderRecord[] = [
     orderNumber: "SIF-2026-0062",
     status: "confirmed",
     totalAmount: 42.0,
-    currencyCode: "USD",
+    currencyCode: "AZN",
     itemCount: 1,
     createdAt: Date.now() - 1000 * 60 * 60 * 24 * 2,
     items: [
@@ -86,7 +86,7 @@ export const SEED_ORDERS: OrderRecord[] = [
     orderNumber: "SIF-2026-0065",
     status: "pending",
     totalAmount: 25.0,
-    currencyCode: "USD",
+    currencyCode: "AZN",
     itemCount: 1,
     createdAt: Date.now() - 1000 * 60 * 60 * 8,
     items: [
