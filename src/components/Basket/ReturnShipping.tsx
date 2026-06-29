@@ -1,19 +1,20 @@
-import {Button} from "antd";
-import {FaArrowRight} from "react-icons/fa";
-import {useNavigate} from "react-router";
-import {mainPath} from "../../data/constant.tsx";
+import { Button } from "antd";
+import { useNavigate } from "react-router";
+import { mainPath } from "../../data/constant";
 
 export default function ReturnShipping() {
-    const navigate = useNavigate();
-    return (
-        <Button
-            type="link"
-            onClick={() => navigate(mainPath.home.main)}
-            icon={<FaArrowRight className="w-4 h-4 rotate-180"/>}
-            className="text-slate-500 hover:text-sky-600 pl-0"
-        >
-            Alış-verişə davam et
-        </Button>
-    );
+  const navigate = useNavigate();
+
+  return (
+    <div className="pt-6 mt-4 border-t border-gray-200 text-center">
+      <Button
+        onClick={() => navigate(mainPath.home.main)}
+        type="default"
+        size="middle"
+        className="rounded-lg px-6 h-10 border-gray-200 text-[#003459] hover:border-[#00A8E8] hover:text-[#00A8E8]"
+      >
+        Alış-verişə davam et
+      </Button>
+    </div>
+  );
 }
- 

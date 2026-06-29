@@ -1,86 +1,101 @@
-import {Checkbox} from "antd";
-import {BsTrash2} from "react-icons/bs";
+import { Checkbox } from "antd";
+import { BsTrash2 } from "react-icons/bs";
+import type { CartItemWithProduct } from "../../db/types";
+import { formatUnitLabel } from "../../data/searchParams";
 import QuantityInput from "../Basket/QuantityInput.tsx";
 
-export interface CartItem {
-    id: string | number;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-    quantity: number;
-    stock: number;
-    sku?: string;
-}
-
 interface Props {
-    item: CartItem;
+  item: CartItemWithProduct;
+  selected: boolean;
+  onSelectChange: (checked: boolean) => void;
+  onQuantityChange: (productId: string, quantity: number) => void;
+  onRemove: (productId: string) => void;
 }
 
-export default function ProductBasketCard({item}: Props) {
-    return (
-        <div
-            className="group bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 transition-all duration-300 hover:border-slate-200"
-        >
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+function formatPrice(price: number, currency: string): string {
+  const symbol = currency === "USD" ? "$" : currency;
+  return `${symbol}${price.toFixed(2)}`;
+}
 
-                <div className="flex items-start gap-4">
-                    <Checkbox className="mt-1"/>
-                    <div
-                        className="relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden bg-slate-100 shrink-0">
-                        <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-                </div>
-                <div className="flex-1 min-w-0">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                        <div className="flex-1">
-                            <h3 className="text-lg font-bold text-slate-900 mb-1 line-clamp-2">
-                                {item.name}
-                            </h3>
-                            <p className="text-sm text-slate-500 mb-2 line-clamp-1">
-                                {item.description}
-                            </p>
-                            {item.sku && (
-                                <span className="text-xs text-slate-400 font-mono">
-                                    SKU: {item.sku}
-                                </span>
-                            )}
+export default function ProductBasketCard({
+  item,
+  selected,
+  onSelectChange,
+  onQuantityChange,
+  onRemove,
+}: Props) {
+  const { product, quantity } = item;
+  const meta = [product.group, product.brand].filter(Boolean).join(" · ");
 
-                            <div className="mt-2 flex items-center gap-2">
-                                <span
-                                    className={`w-2 h-2 rounded-full ${item.stock > 0 ? 'bg-emerald-500' : 'bg-rose-500'}`}/>
-                                <span className="text-xs text-slate-500">
-                                    {item.stock > 5 ? 'Stokda var' : `Yalnız ${item.stock} ədəd qaldı`}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-3">
-                            <div className="text-right">
-                                <div className="text-xl font-bold text-sky-600">
-                                    ${(item.price * item.quantity).toFixed(2)}
-                                </div>
-                                <div className="text-sm text-slate-400">
-                                    ${item.price.toFixed(2)} / ədəd
-                                </div>
-                            </div>
-                            <QuantityInput/>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    className="flex md:flex-col items-center justify-between md:justify-start gap-2 pt-2 md:pt-0 border-t md:border-t-0 border-slate-100">
-                    <button
-                        className="p-3 text-slate-400 hover:text-rose-500 hover:bg-rose-50 rounded-xl transition-all duration-300"
-                        title="Sil"
-                    >
-                        <BsTrash2 className="w-5 h-5"/>
-                    </button>
-                </div>
+  return (
+    <article
+      className={`rounded-lg border bg-white transition-colors duration-200
+        ${selected ? "border-[#00A8E8]" : "border-gray-200"}`}
+    >
+      <div className="p-4 md:p-5">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-5">
+          <div className="flex items-start gap-3">
+            <Checkbox
+              className="mt-1"
+              checked={selected}
+              onChange={(e) => onSelectChange(e.target.checked)}
+            />
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-md bg-[#f8fafc] border border-gray-100 shrink-0 flex flex-col items-center justify-center p-2">
+              <span className="font-mono text-[11px] font-bold text-[#003459] text-center leading-tight">
+                {product.code}
+              </span>
+              <span className="text-[9px] mt-1 uppercase tracking-wide text-gray-400 text-center">
+                {formatUnitLabel(product.unit)}
+              </span>
             </div>
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              <div className="flex-1">
+                <div className="flex items-start gap-2 mb-1">
+                  <h3 className="text-base font-semibold text-[#003459] line-clamp-2 flex-1">
+                    {product.name}
+                  </h3>
+                  {selected && (
+                    <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-[#00A8E8] bg-[#00A8E8]/8 px-2 py-0.5 rounded">
+                      Seçilib
+                    </span>
+                  )}
+                </div>
+                {meta && <p className="text-sm text-gray-500 mb-1 line-clamp-1">{meta}</p>}
+                <span className="text-xs text-gray-400 font-mono">{product.code}</span>
+              </div>
+
+              <div className="flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-3">
+                <div className="text-right">
+                  <div className="text-lg font-bold text-[#003459]">
+                    {formatPrice(product.price * quantity, product.currencyCode)}
+                  </div>
+                  <div className="text-xs text-gray-400">
+                    {formatPrice(product.price, product.currencyCode)} / {formatUnitLabel(product.unit)}
+                  </div>
+                </div>
+                <QuantityInput
+                  value={quantity}
+                  onChange={(qty) => onQuantityChange(product.id, qty)}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex md:flex-col items-center justify-end md:justify-start">
+            <button
+              type="button"
+              onClick={() => onRemove(product.id)}
+              className="p-2 text-gray-400 hover:text-red-500 rounded-md transition-colors cursor-pointer"
+              title="Sil"
+            >
+              <BsTrash2 className="w-4 h-4" />
+            </button>
+          </div>
         </div>
-    );
+      </div>
+    </article>
+  );
 }

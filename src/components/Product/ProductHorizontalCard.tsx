@@ -1,122 +1,107 @@
-import { Button } from "antd";
-import { useState } from "react";
-import type { Product } from "../../types";
-import { BiHeart } from "react-icons/bi";
-import { FiShoppingCart } from "react-icons/fi";
+import { type MouseEvent } from "react";
+import {
+  CheckCircleFilled,
+  HeartFilled,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
+import { message } from "antd";
+import type { ProductRecord } from "../../db/types";
+import { formatUnitLabel } from "../../data/searchParams";
+import { useIsInCart } from "../../hooks/useCart";
+import { addToCart } from "../../services/cartService";
+import { useWishlistStore } from "../../stores/useWishlistStore";
 
-interface ProductCardProps {
-    product: Product;
-    inWishlist?: boolean;
-    toggleWishlist?: (product: Product) => void;
-    inStock?: boolean;
-    onAddToCart?: (product: Product) => void;
+interface Props {
+  product: ProductRecord;
 }
 
-export default function ProductHorizontalCard({
-                                                  product,
-                                                  inWishlist = false,
-                                                  toggleWishlist,
-                                                  inStock = true,
-                                                  onAddToCart,
-                                              }: ProductCardProps) {
-    const [isWishlisted, setIsWishlisted] = useState(inWishlist);
+function formatPrice(price: number, currency: string): string {
+  const symbol = currency === "USD" ? "$" : currency;
+  return `${symbol}${price.toFixed(2)}`;
+}
 
-    const handleWishlistToggle = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setIsWishlisted(!isWishlisted);
-        toggleWishlist?.(product);
-    };
+export default function ProductHorizontalCard({ product }: Props) {
+  const { inCart } = useIsInCart(product.id);
+  const removeFromWishlist = useWishlistStore((state) => state.removeFromWishlist);
+  const meta = [product.group, product.brand].filter(Boolean).join(" · ");
 
-    const handleAddToCart = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        if (inStock) {
-            onAddToCart?.(product);
-        }
-    };
+  const handleAddToCart = async (e: MouseEvent) => {
+    e.stopPropagation();
+    if (inCart) return;
 
-    return (
-        <div className="group bg-white rounded-2xl border border-slate-100 hover:border-[#00A8E8]/30 hover:shadow-lg hover:shadow-[#00A8E8]/5 transition-all duration-300 overflow-hidden">
-            <div className="flex flex-col sm:flex-row h-full">
+    try {
+      const added = await addToCart(product);
+      if (added) {
+        message.success(`${product.name} səbətə əlavə edildi`);
+      }
+    } catch {
+      message.error("Səbətə əlavə edilə bilmədi");
+    }
+  };
 
-                {/* Image Section - Fixed height */}
-                <div className="relative w-full sm:w-48 md:w-52 flex-shrink-0 aspect-square sm:aspect-auto sm:h-56 overflow-hidden bg-slate-50">
-                    <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+  const handleRemove = (e: MouseEvent) => {
+    e.stopPropagation();
+    removeFromWishlist(product.id);
+    message.info(`${product.name} istək siyahısından silindi`);
+  };
 
-                    {/* Category Badge */}
-                    <span className="absolute top-3 left-3 px-3 py-1.5 bg-white/95 backdrop-blur text-xs font-medium text-slate-700 rounded-lg shadow-sm">
-                        {product.category}
-                    </span>
-
-                    {/* Wishlist Button - Hover'da görünür */}
-                    <button
-                        onClick={handleWishlistToggle}
-                        className={`absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-white/95 backdrop-blur shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 hover:bg-[#00A8E8] hover:text-white ${
-                            isWishlisted ? "opacity-100 bg-rose-50 text-rose-500" : "text-slate-600"
-                        }`}
-                    >
-                        <BiHeart className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`} />
-                    </button>
-
-                    {/* Stock Status - Bottom */}
-                    <div className="absolute bottom-3 left-3">
-                        <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
-                            inStock
-                                ? "bg-emerald-500 text-white"
-                                : "bg-rose-500 text-white"
-                        }`}>
-                            <span className={`w-1.5 h-1.5 rounded-full bg-white ${inStock ? "animate-pulse" : ""}`} />
-                            {inStock ? "STOKDA VAR" : "STOKDA YOXDUR"}
-                        </span>
-                    </div>
-                </div>
-
-                {/* Content Section - Compact */}
-                <div className="flex-1 p-4 sm:p-5 flex flex-col justify-between min-h-[200px] sm:min-h-0">
-                    <div>
-                        {/* Title - Primary color hover */}
-                        <h3 className="text-lg font-bold text-slate-900 leading-tight mb-2 line-clamp-2 group-hover:text-[#00A8E8] transition-colors duration-300 cursor-pointer">
-                            {product.name}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-sm text-slate-500 line-clamp-2 leading-relaxed">
-                            {product.description}
-                        </p>
-                    </div>
-
-                    {/* Bottom - Price & Button */}
-                    <div className="flex items-end justify-between gap-4 mt-4 pt-4 border-t border-slate-50">
-                        <div>
-                            <span className="text-2xl font-bold text-slate-900">
-                                ${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                            </span>
-                            {inStock && (
-                                <p className="text-xs text-emerald-600 font-medium mt-0.5">
-                                    Stokda var
-                                </p>
-                            )}
-                        </div>
-
-                        <Button
-                            type="primary"
-                            icon={<FiShoppingCart className="w-4 h-4" />}
-                            onClick={handleAddToCart}
-                            disabled={!inStock}
-                            className={`h-11 px-5 rounded-xl text-sm font-semibold border-0 transition-all duration-200 ${
-                                inStock
-                                    ? "bg-[#00A8E8] hover:bg-[#0090c7] hover:shadow-lg hover:shadow-[#00A8E8]/25 hover:-translate-y-0.5"
-                                    : "bg-slate-200 text-slate-400 cursor-not-allowed"
-                            }`}
-                        >
-                            Səbətə əlavə et
-                        </Button>
-                    </div>
-                </div>
-            </div>
+  return (
+    <article className="rounded-lg border border-gray-200 bg-white overflow-hidden">
+      <div className="flex flex-col sm:flex-row">
+        <div className="w-full sm:w-36 md:w-40 shrink-0 aspect-4/3 sm:aspect-auto sm:min-h-[140px] bg-[#f8fafc] border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col items-center justify-center p-4">
+          <span className="font-mono text-xs font-bold text-[#003459]">{product.code}</span>
+          <span className="text-[10px] text-gray-400 mt-1 uppercase">{formatUnitLabel(product.unit)}</span>
         </div>
-    );
+
+        <div className="flex-1 p-4 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div className="flex-1 min-w-0">
+            <h3 className="text-[#003459] font-semibold text-sm mb-1 line-clamp-2">{product.name}</h3>
+            {meta && <p className="text-xs text-gray-500 line-clamp-1">{meta}</p>}
+          </div>
+
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+            <div className="text-right">
+              <div className="text-lg font-bold text-[#00A8E8] tabular-nums">
+                {formatPrice(product.price, product.currencyCode)}
+              </div>
+              <div className="text-[10px] text-gray-400">/ {formatUnitLabel(product.unit)}</div>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleRemove}
+              className="p-2 text-red-400 hover:text-red-500 rounded-md transition-colors cursor-pointer"
+              title="İstək siyahısından sil"
+            >
+              <HeartFilled className="text-base" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleAddToCart}
+              disabled={inCart}
+              className={`h-10 px-4 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors
+                ${
+                  inCart
+                    ? "bg-gray-50 text-[#00A8E8] border border-[#00A8E8]/30 cursor-default"
+                    : "bg-[#00A8E8] hover:bg-[#0096D1] text-white cursor-pointer"
+                }`}
+            >
+              {inCart ? (
+                <>
+                  <CheckCircleFilled />
+                  Səbətdədir
+                </>
+              ) : (
+                <>
+                  <ShoppingCartOutlined />
+                  Səbətə əlavə et
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
 }

@@ -1,0 +1,60 @@
+import type { ProductRecord, UnitRecord } from "./types";
+
+export const SEED_UNITS: UnitRecord[] = [
+  { id: 1, name: "EDED" },
+  { id: 2, name: "KAROBKA" },
+  { id: 4, name: "QRAM" },
+  { id: 3, name: "LITR" },
+  { id: 5, name: "PACKA" },
+];
+
+export const SEED_PRODUCTS: ProductRecord[] = [
+  {
+    id: "2925",
+    code: "ST00354",
+    name: "8ML - HAZIR MASIN ETIRLERI HURREM",
+    unit: "EDED",
+    group: null,
+    brand: null,
+    canUseCurrency: 1,
+    currencyCode: "USD",
+    priceClass: 1,
+    price: 2.0,
+  },
+  {
+    id: "2435",
+    code: "ST00001JKLLK",
+    name: "AJMAL - IRIS VIOLET",
+    unit: "QRAM",
+    group: "YAGLAR",
+    brand: null,
+    canUseCurrency: 1,
+    currencyCode: "USD",
+    priceClass: 1,
+    price: 0.5,
+  },
+  {
+    id: "802",
+    code: "7784",
+    name: "ARABIAN OUD - EHSAS ",
+    unit: "QRAM",
+    group: "YAGLAR",
+    brand: "SELUZ",
+    canUseCurrency: 1,
+    currencyCode: "USD",
+    priceClass: 1,
+    price: 0.3,
+  },
+  {
+    id: "1220",
+    code: "8198",
+    name: "ARD AL ZAAFARAN - DIRHAM ",
+    unit: "QRAM",
+    group: "YAGLAR",
+    brand: "IBERCHEM",
+    canUseCurrency: 1,
+    currencyCode: "USD",
+    priceClass: 1,
+    price: 0.3,
+  },
+];

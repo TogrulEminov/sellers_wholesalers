@@ -1,0 +1,52 @@
+{
+  "Product": [
+    {
+      "Id": 2925,
+      "Code": "ST00354",
+      "Name": "8ML - HAZIR MASIN ETIRLERI HURREM",
+      "Unit": "EDED",
+      "Group": null,
+      "Brand": null,
+      "CanUseCurrency": 1,
+      "CurrencyCode": "USD",
+      "PriceClass": 1,
+      "Price": 2.0
+    },
+    {
+      "Id": 2435,
+      "Code": "ST00001JKLLK",
+      "Name": "AJMAL - IRIS VIOLET",
+      "Unit": "QRAM",
+      "Group": "YAGLAR",
+      "Brand": null,
+      "CanUseCurrency": 1,
+      "CurrencyCode": "USD",
+      "PriceClass": 1,
+      "Price": 5.0
+    },
+    {
+      "Id": 802,
+      "Code": "7784",
+      "Name": "ARABIAN OUD - EHSAS ",
+      "Unit": "QRAM",
+      "Group": "YAGLAR",
+      "Brand": "SELUZ",
+      "CanUseCurrency": 1,
+      "CurrencyCode": "USD",
+      "PriceClass": 1,
+      "Price": 3.0
+    },
+    {
+      "Id": 1220,
+      "Code": "8198",
+      "Name": "ARD AL ZAAFARAN - DIRHAM ",
+      "Unit": "QRAM",
+      "Group": "YAGLAR",
+      "Brand": "IBERCHEM",
+      "CanUseCurrency": 1,
+      "CurrencyCode": "USD",
+      "PriceClass": 1,
+      "Price": 3.0
+    }
+  ]
+}

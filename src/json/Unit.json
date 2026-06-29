@@ -1,0 +1,9 @@
+{
+  "Unit": [
+    { "Id": 1, "Name": "EDED" },
+    { "Id": 2, "Name": "KAROBKA" },
+    { "Id": 4, "Name": "QRAM" },
+    { "Id": 3, "Name": "LITR" },
+    { "Id": 5, "Name": "PACKA" }
+  ]
+}

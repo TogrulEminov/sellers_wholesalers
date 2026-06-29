@@ -1,7 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
 @import "tailwindcss";
-@import "antd/dist/reset.css";
+@import "antd/dist/reset.css" layer(base);
 
-/* Custom scrollbar */
+/* Ant reset base layer-də p/heading margin qaytarır; spacing Tailwind utility-lərlə idarə olunur */
+@layer base {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  dl {
+    margin: 0;
+  }
+}
+@theme {
+  --color-brand-dark: #003459;
+  --color-brand-darker: #002840;
+  --color-brand-gold: #00a8e8;
+  --color-brand-gold-light: #33b9eb;
+  --color-brand-copper: #00a8e8;
+  --color-brand-cream: #f8fafc;
+  --color-brand-surface: #ffffff;
+  --color-brand-sand: #eef8fd;
+  --color-brand-text: #003459;
+  --color-brand-muted: #8b9aa8;
+  --color-brand-border: #e5e7eb;
+  --color-brand-success: #00d4aa;
+}
+
+body {
+  font-family: "DM Sans", Inter, system-ui, sans-serif;
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-text);
+  -webkit-font-smoothing: antialiased;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -22,6 +59,33 @@
 
 @layer utilities {
   .container {
-    @apply px-4 mx-auto;
+    @apply px-4 mx-auto max-w-7xl;
   }
+}
+
+.sidebar-menu .ant-menu-item {
+  margin-inline: 8px !important;
+  width: calc(100% - 16px) !important;
+  border-radius: 0.5rem !important;
+  height: 44px !important;
+  line-height: 44px !important;
+}
+
+.sidebar-menu .ant-menu-item-selected {
+  background-color: #eef8fd !important;
+  color: #00a8e8 !important;
+  font-weight: 600;
+}
+
+.sidebar-menu .ant-menu-title-content {
+  margin-inline-start: 0 !important;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 2px;
 }

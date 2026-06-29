@@ -1,0 +1,9 @@
+{
+  "PriceClass": [
+    { "Id": 1, "Name": "TOPDAN", "PriceClass": 1 },
+    { "Id": 2, "Name": "PERAKENDE", "PriceClass": 2 },
+    { "Id": 3, "Name": "XUSUSİ", "PriceClass": 3 },
+    { "Id": 4, "Name": "MINIMUM ", "PriceClass": 4 },
+    { "Id": 5, "Name": "VALYUTA", "PriceClass": 5 }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "Group": [
+    { "Id": 1, "Name": "YAGLAR", "Module": "STOK", "IsWebVisible": 1 },
+    { "Id": 2, "Name": "QABLAR", "Module": "STOK", "IsWebVisible": 1 },
+    { "Id": 3, "Name": "DIFFUZERLER", "Module": "STOK", "IsWebVisible": 1 },
+    { "Id": 4, "Name": "DIGER", "Module": "STOK", "IsWebVisible": 1 },
+    { "Id": 5, "Name": "BUXURLAR", "Module": "STOK", "IsWebVisible": null },
+    { "Id": 7, "Name": "DIFFUZER", "Module": "STOK", "IsWebVisible": null },
+    { "Id": 8, "Name": "QAPAQ", "Module": "STOK", "IsWebVisible": null },
+    { "Id": 10, "Name": "EHMEDLI", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 11, "Name": "NEFTCILER", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 12, "Name": "ANBAR", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 13, "Name": "GENCE", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 14, "Name": "SUMQAYIT", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 15, "Name": "VIOLASEDEREK", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 16, "Name": "NERIMANOV", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 17, "Name": "RS PARFUM", "Module": "CARI", "IsWebVisible": 1 },
+    {
+      "Id": 19,
+      "Name": "HURREM SEDEREK ",
+      "Module": "CARI",
+      "IsWebVisible": 1
+    },
+    { "Id": 68, "Name": "AZERBAYCAN", "Module": "ULKE", "IsWebVisible": 1 },
+    { "Id": 118, "Name": "Q", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 119, "Name": "ORTAQ", "Module": "CARI", "IsWebVisible": 1 },
+    { "Id": 120, "Name": "SEDEREK", "Module": "CARI", "IsWebVisible": null }
+  ]
+}
