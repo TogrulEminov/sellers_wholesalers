@@ -1,4 +1,3 @@
-import { HeartFilled } from "@ant-design/icons";
 import ProductHorizontalCard from "../Product/ProductHorizontalCard.tsx";
 import ProductCard from "../Product/ProductCard.tsx";
 import { useFilteredWishlistItems } from "../../hooks/useWishlist";
@@ -6,6 +5,7 @@ import type { WishlistSort } from "../../hooks/useWishlist";
 import { ALL_CATEGORIES } from "../../data/searchParams";
 import { Link } from "react-router";
 import { mainPath } from "../../data/constant";
+import { FaHeart } from "react-icons/fa";
 
 interface Props {
   viewMode: "list" | "grid";
@@ -22,7 +22,7 @@ export default function WishlistProduct({ viewMode, unitFilter, sortBy }: Props)
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <div className="w-16 h-16 bg-[#eef8fd] rounded-xl flex items-center justify-center mb-4">
-          <HeartFilled className="w-7 h-7 text-[#00A8E8]/40" />
+          <FaHeart className="size-7 text-[#00A8E8]/40" />
         </div>
         <h3 className="text-lg font-semibold text-[#003459] mb-2">
           {isFiltered ? "Bu filtrə uyğun məhsul yoxdur" : "Siyahı boşdur"}
