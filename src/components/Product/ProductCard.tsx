@@ -10,6 +10,7 @@ import {
   useWishlistStore,
 } from "../../stores/useWishlistStore";
 import { FaCheck, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { GiPerfumeBottle } from "react-icons/gi";
 
 interface Props {
   product: ProductRecord;
@@ -52,19 +53,15 @@ export default function ProductCard({ product }: Props) {
         ${inCart ? "border-brand-gold/50" : "border-gray-100 hover:border-brand-gold/25"}`}
     >
       <div className="relative aspect-4/3 overflow-hidden bg-linear-to-br from-brand-sand to-brand-dark/8 flex items-center justify-center">
-        <div className="text-center px-6">
-          <span className="text-brand-gold font-mono text-sm font-bold tracking-wider">
-            {product.code}
-          </span>
-          <p className="text-brand-muted text-xs mt-1 uppercase tracking-widest">
-            {formatUnitLabel(product.unit)}
-          </p>
-          {product.brand && (
-            <p className="text-brand-success text-[10px] mt-1 font-semibold uppercase tracking-widest">
-              {product.brand}
-            </p>
-          )}
-        </div>
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(26,26,26,0.08) 1px, transparent 1px)",
+            backgroundSize: "16px 16px",
+          }}
+        />
+        <GiPerfumeBottle className="relative text-brand-dark/10 group-hover:text-brand-gold/20 transition-colors duration-300 text-[88px]" />
 
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
           <span className="bg-brand-gold text-brand-dark text-[9.5px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">

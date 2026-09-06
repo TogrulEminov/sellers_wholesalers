@@ -13,6 +13,7 @@ import {
 } from "../data/orderLabels";
 import { mainPath } from "../data/constant";
 import { formatUnitLabel } from "../data/searchParams";
+import PageHero from "../components/Layout/PageHero";
 
 export default function MyOrdersPage() {
   const { isAuthenticated, user, loading: authLoading } = useAuth();
@@ -21,32 +22,48 @@ export default function MyOrdersPage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <Spin size="large" />
-      </div>
+      <section className="min-h-screen py-8 md:py-12">
+        <div className="container">
+          <PageHero
+            title="Sifariş tarixçəniz"
+            subtitle="Bütün sifarişlərinizi və qaimə fakturalarınızı burada izləyin."
+          />
+          <div className="flex items-center justify-center py-20">
+            <Spin size="large" />
+          </div>
+        </div>
+      </section>
     );
   }
 
   if (!isAuthenticated || !user) {
     return (
-      <section className="min-h-[70vh] flex items-center justify-center px-4">
-        <div className="text-center max-w-md">
-          <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-brand-sand flex items-center justify-center">
-            <FiPackage className="w-8 h-8 text-brand-gold" />
+      <section className="min-h-screen py-8 md:py-12">
+        <div className="container">
+          <PageHero
+            title="Sifariş tarixçəniz"
+            subtitle="Bütün sifarişlərinizi və qaimə fakturalarınızı burada izləyin."
+          />
+          <div className="min-h-[50vh] flex items-center justify-center px-4">
+            <div className="text-center max-w-md">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-brand-sand flex items-center justify-center">
+                <FiPackage className="w-8 h-8 text-brand-gold" />
+              </div>
+              <h1 className="text-2xl font-bold text-brand-dark mb-2">
+                Sifarişlərim
+              </h1>
+              <p className="text-gray-500 mb-6">
+                Sifariş tarixçənizi görmək üçün hesabınıza daxil olun.
+              </p>
+              <Link
+                to={mainPath.login.main}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-white font-semibold hover:bg-brand-copper transition-colors"
+              >
+                Daxil ol
+                <FiArrowRight />
+              </Link>
+            </div>
           </div>
-          <h1 className="text-2xl font-bold text-brand-dark mb-2">
-            Sifarişlərim
-          </h1>
-          <p className="text-gray-500 mb-6">
-            Sifariş tarixçənizi görmək üçün hesabınıza daxil olun.
-          </p>
-          <Link
-            to={mainPath.login.main}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-white font-semibold hover:bg-brand-copper transition-colors"
-          >
-            Daxil ol
-            <FiArrowRight />
-          </Link>
         </div>
       </section>
     );
@@ -55,6 +72,11 @@ export default function MyOrdersPage() {
   return (
     <section className="min-h-screen py-8 md:py-12">
       <div className="container">
+        <PageHero
+          title="Sifariş tarixçəniz"
+          subtitle="Bütün sifarişlərinizi və qaimə fakturalarınızı burada izləyin."
+        />
+
         <div className="mb-8 pb-4 border-b border-gray-200">
           <p className="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Hesab

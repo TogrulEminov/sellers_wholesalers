@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { message } from "antd";
+import PageHero from "../components/Layout/PageHero.tsx";
 import BasketTotalApply from "../components/Basket/BasketTotalApply.tsx";
 import BasketTitle from "../components/Basket/BasketTitle.tsx";
 import SelectAll from "../components/Basket/SelectAll.tsx";
@@ -109,6 +110,11 @@ export default function BasketPage() {
   return (
     <section className="min-h-screen py-8 md:py-12">
       <div className="container">
+        <PageHero
+          title="Sifarişinizi tamamlayın"
+          subtitle="Seçdiyiniz məhsulları yoxlayın, miqdarları dəqiqləşdirin və sifarişi rəsmiləşdirin."
+        />
+
         <BasketTitle />
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 space-y-4">

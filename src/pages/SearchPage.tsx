@@ -6,6 +6,7 @@ import ProductCard from "../components/Product/ProductCard";
 import { mainPath } from "../data/constant";
 import { SEARCH_PARAMS } from "../data/searchParams";
 import { useProductSearch } from "../hooks/useProducts";
+import PageHero from "../components/Layout/PageHero";
 
 const PAGE_SIZE = 9;
 
@@ -38,6 +39,11 @@ export default function SearchPage() {
   return (
     <section className="py-6 lg:py-8">
       <div className="container">
+        <PageHero
+          title="Məhsul axtarışı"
+          subtitle="Kataloqumuzdan ad, kod, brend və ya qrup üzrə anında tapın."
+        />
+
         <div className="mb-6">
           <p className="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Axtarış

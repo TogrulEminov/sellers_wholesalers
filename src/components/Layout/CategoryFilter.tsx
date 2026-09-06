@@ -63,24 +63,27 @@ export default function CategoryFilter() {
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">
         Qruplar
       </p>
-      <div className="-mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto category-filter-scroll">
-        <div className="flex gap-2 w-max sm:w-auto sm:flex-wrap pb-1">
-          <GroupBadge
-            label="Hamısı"
-            count={counts?.[ALL_GROUPS] ?? "—"}
-            active={selected === ALL_GROUPS}
-            onClick={() => setGroup(ALL_GROUPS)}
-          />
-          {groups.map((group) => (
+      <div className="relative -mx-4 sm:mx-0">
+        <div className="overflow-x-auto category-filter-scroll px-4 sm:px-0">
+          <div className="flex gap-2 w-max sm:w-auto sm:flex-wrap pb-1">
             <GroupBadge
-              key={group.name}
-              label={group.label}
-              count={counts?.[group.name] ?? 0}
-              active={normalizeGroupName(selected) === normalizeGroupName(group.name)}
-              onClick={() => setGroup(group.name)}
+              label="Hamısı"
+              count={counts?.[ALL_GROUPS] ?? "—"}
+              active={selected === ALL_GROUPS}
+              onClick={() => setGroup(ALL_GROUPS)}
             />
-          ))}
+            {groups.map((group) => (
+              <GroupBadge
+                key={group.name}
+                label={group.label}
+                count={counts?.[group.name] ?? 0}
+                active={normalizeGroupName(selected) === normalizeGroupName(group.name)}
+                onClick={() => setGroup(group.name)}
+              />
+            ))}
+          </div>
         </div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-brand-cream to-transparent sm:hidden" />
       </div>
     </div>
   );

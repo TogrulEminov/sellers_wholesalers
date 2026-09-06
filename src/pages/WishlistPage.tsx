@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { message, Modal } from "antd";
+import PageHero from "../components/Layout/PageHero.tsx";
 import WishlistTitle from "../components/Wishlist/WishlistTitle.tsx";
 import WishlistFilter from "../components/Wishlist/WishlistFilter.tsx";
 import WishlistProduct from "../components/Wishlist/WishlistProduct.tsx";
@@ -36,6 +37,11 @@ export default function WishlistPage() {
   return (
     <section className="min-h-screen py-8 md:py-12">
       <div className="container">
+        <PageHero
+          title="Seçilmiş məhsullarınız"
+          subtitle="Bəyəndiyiniz məhsulları burada saxlayın və hazır olduğunuzda səbətə əlavə edin."
+        />
+
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
           <WishlistTitle itemCount={itemCount} />
           <WishlistFilter

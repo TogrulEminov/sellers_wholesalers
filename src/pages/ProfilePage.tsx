@@ -6,6 +6,7 @@ import dayjs, { type Dayjs } from "dayjs";
 import { useAuth } from "../hooks/useAuth";
 import { useCustomerProfile } from "../hooks/useProfile";
 import { mainPath } from "../data/constant";
+import PageHero from "../components/Layout/PageHero";
 import {
   ProfileError,
   changeCustomerPassword,
@@ -46,28 +47,44 @@ export default function ProfilePage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <Spin size="large" />
-      </div>
+      <section className="min-h-screen py-8 md:py-12">
+        <div className="container mx-auto">
+          <PageHero
+            title="Hesabınızı idarə edin"
+            subtitle="Şəxsi məlumatlarınızı və şifrənizi burada yeniləyin."
+          />
+          <div className="flex items-center justify-center py-20">
+            <Spin size="large" />
+          </div>
+        </div>
+      </section>
     );
   }
 
   if (!isAuthenticated || !user) {
     return (
-      <section className="min-h-[70vh] flex items-center justify-center px-4">
-        <div className="text-center max-w-md">
-          <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-brand-sand flex items-center justify-center">
-            <FiUser className="w-8 h-8 text-brand-gold" />
+      <section className="min-h-screen py-8 md:py-12">
+        <div className="container mx-auto">
+          <PageHero
+            title="Hesabınızı idarə edin"
+            subtitle="Şəxsi məlumatlarınızı və şifrənizi burada yeniləyin."
+          />
+          <div className="min-h-[50vh] flex items-center justify-center px-4">
+            <div className="text-center max-w-md">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-lg bg-brand-sand flex items-center justify-center">
+                <FiUser className="w-8 h-8 text-brand-gold" />
+              </div>
+              <h1 className="text-2xl font-bold text-brand-dark mb-2">Profilim</h1>
+              <p className="text-gray-500 mb-6">Profilinizi redaktə etmək üçün daxil olun.</p>
+              <Link
+                to={mainPath.login.main}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-white font-semibold hover:bg-brand-copper transition-colors"
+              >
+                Daxil ol
+                <FiArrowRight />
+              </Link>
+            </div>
           </div>
-          <h1 className="text-2xl font-bold text-brand-dark mb-2">Profilim</h1>
-          <p className="text-gray-500 mb-6">Profilinizi redaktə etmək üçün daxil olun.</p>
-          <Link
-            to={mainPath.login.main}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-white font-semibold hover:bg-brand-copper transition-colors"
-          >
-            Daxil ol
-            <FiArrowRight />
-          </Link>
         </div>
       </section>
     );
@@ -112,6 +129,11 @@ export default function ProfilePage() {
   return (
     <section className="min-h-screen py-8 md:py-12">
       <div className="container mx-auto">
+        <PageHero
+          title="Hesabınızı idarə edin"
+          subtitle="Şəxsi məlumatlarınızı və şifrənizi burada yeniləyin."
+        />
+
         <div className="mb-8 pb-4 border-b border-gray-200">
           <p className="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-2">
             Hesab
